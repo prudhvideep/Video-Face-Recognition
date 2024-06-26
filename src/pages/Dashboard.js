@@ -141,9 +141,9 @@ export default function Dashboard() {
     return () => unsubscribe();
   }, []);
 
-  // useEffect(() => {
-  //   handleRefresh();
-  // }, [user]);
+  useEffect(() => {
+    handleRefresh();
+  }, [user]);
 
   return (
     <>
