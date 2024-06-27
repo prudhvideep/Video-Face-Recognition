@@ -20,6 +20,7 @@ function SignIn() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log("User ---> ",user)
         navigate("/dashboard");
       }
     });

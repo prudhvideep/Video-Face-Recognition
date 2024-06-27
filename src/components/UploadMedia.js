@@ -89,7 +89,7 @@ export default function UploadMedia({ user,setShowMessage,setNotificationMessage
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-2xl mx-auto my-[-40px] md:my-auto max-h-xl border-2 hover:border-gray-300 w-full">
+    <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-2xl mx-auto my-[-40px] md:my-auto max-h-xl border-2 hover:border-indigo-300 w-full">
       <h2 className="text-2xl font-semibold text-gray-800">
         Upload Media
       </h2>

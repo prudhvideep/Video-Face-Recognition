@@ -4,12 +4,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import UploadMedia from "../components/UploadMedia";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const userNavigation = [
-  { name: "Your Profile", onclick: "#" },
-  { name: "Settings", onclick: "#" },
-  { name: "Sign out", onclick: "handleSignOut" },
+  { name: "Your Profile"},
+  { name: "Settings" },
+  { name: "Sign out"},
 ];
 
 function classNames(...classes) {
@@ -28,6 +28,10 @@ export default function Dashboard() {
   const [fetching, setFetching] = useState(false);
   const [showMessage,setShowMessage] = useState(false);
   const [notificationMessage,setNotificationMessage] = useState(null);
+
+  const handleProfileNavigation = () => {
+    navigate("/profile");
+  }
 
   const handleSignOut = async () => {
     try {
@@ -101,8 +105,6 @@ export default function Dashboard() {
       console.log(responseObj);
 
       setResults(responseObj);
-      // setNotificationMessage("Records Fetched Successfully !!!")
-      // setShowMessage(true)
     } catch (error) {
       console.error("Error fetching the data: ", error);
     } finally {
@@ -129,12 +131,7 @@ export default function Dashboard() {
           uid: user.uid || "",
         });
       } else {
-        setUser({
-          displayName: "",
-          email: "",
-          imageUrl: "",
-          uid: "",
-        });
+        navigate("/");
       }
     });
 
@@ -192,19 +189,21 @@ export default function Dashboard() {
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <Link
+                                  <button
                                     onClick={() => {
                                       if (item.name === "Sign out") {
                                         handleSignOut();
+                                      }else if (item.name === "Your Profile"){
+                                        handleProfileNavigation();
                                       }
                                     }}
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
-                                      "block px-4 py-2 text-sm text-gray-700"
+                                      "block w-full px-4 py-2 text-sm text-gray-700"
                                     )}
                                   >
                                     {item.name}
-                                  </Link>
+                                  </button>
                                 )}
                               </Menu.Item>
                             ))}
@@ -258,18 +257,20 @@ export default function Dashboard() {
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
-                      <Disclosure.Button
+                      <button
                         key={item.name}
                         as="a"
                         onClick={() => {
                           if (item.name === "Sign out") {
                             handleSignOut();
+                          }else if (item.name === "Your Profile"){
+                            handleProfileNavigation();
                           }
                         }}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                        className="w-full block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                       >
                         {item.name}
-                      </Disclosure.Button>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -304,7 +305,7 @@ export default function Dashboard() {
             setNotificationMessage={setNotificationMessage}
             />
           </div>
-          <div className="relative bg-white mt-8 md:mt-auto mx-6 sm:mx-auto md:mx-auto p-6 py-auto rounded-2xl shadow-2xl border-2 hover:border-gray-300 max-w-2xl">
+          <div className="relative bg-white mt-8 md:mt-auto mx-6 sm:mx-auto md:mx-auto p-6 py-auto rounded-2xl shadow-2xl border-2 hover:border-indigo-300 max-w-2xl">
             <div className="flex font-medium text-2xl space-x-2 items-center ">
               <h2>Results</h2>
               <svg
