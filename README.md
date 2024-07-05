@@ -9,8 +9,8 @@ In this section, I'll describe the main components in this application.
 The frontend is built using **React.js** and styled with **TailwindCss**.  The application is secured with **Firebase Authentication**.
 
 <p align="center">
-  <img src="./public/images/Login.jpeg" alt="Login" width="45%" />
-  <img src="./public/images/Dashboard.jpeg" alt="Dashboard" width="45%" />
+  <img src="./public/images/Login.jpeg" alt="Login" height="300px" style="object-fit: contain;"/>
+  <img src="./public/images/Dashboard.jpeg" alt="Dashboard" height="300px" style="object-fit: contain;"/>
 </p>
 
 ### Backend
