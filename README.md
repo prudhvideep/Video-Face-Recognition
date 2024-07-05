@@ -18,6 +18,6 @@ The frontend is built using **React.js** and styled with **TailwindCss**.  The a
  
 The structure of the application is shown in the figure below. I used AWS Lambda for serverless computation and S3 for storing the data required for the functions.
 
-![Architecture Diagram](images/architecture-diagram.png)
+![Architecture Diagram](./public/images/architecture-diagram.png)
 
 
