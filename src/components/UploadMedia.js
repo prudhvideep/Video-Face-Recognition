@@ -40,6 +40,7 @@ export default function UploadMedia({ user,setShowMessage,setNotificationMessage
         key: file.name,
         contentType: file.type,
         uid: user.uid,
+        useremail: user.email,
       };
   
       const response = await fetch(process.env.REACT_APP_LAMBDA_URL, {
