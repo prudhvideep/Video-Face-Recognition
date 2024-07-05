@@ -4,8 +4,20 @@ In this project, I built an elastic application that can scale out and in on-dem
 **Try it -->** https://main.d2g4ycz7ogc8gz.amplifyapp.com/
 
 ## Description
+In this section, I'll describe the main components in this application. 
+### Frontend
+The frontend is built using **React.js** and styled with **TailwindCss**.  The application is secured with **Firebase Authentication**.
+
+
+### Backend
  Our app will be a video analysis application that uses four Lambda functions to implement a multi-stage pipeline to process videos sent by users.
 
  -  The pipeline starts with a user uploading a video to the input bucket.
- -  Stage 1: The video-splitting function splits the video into frames and chunks them into the group-of-pictures (GoP) using FFmpeg. It stores this group of pictures in an intermediate stage-1 bucket.
- - Stage 2: The face-recognition function extracts the faces in the pictures using a Single Shot MultiBox Detector (SSD) algorithm and uses only the frames that have faces in them for face recognition. It uses a pre-trained CNN model (ResNet-34) for face recognition and outputs the name of the extracted face. The final output is stored in the output bucket.
+ -  **video-splitting function** splits the video into frames and chunks them into the group-of-pictures (GoP) using FFmpeg. It stores this group of pictures in an intermediate stage-1 bucket.
+ - **face-recognition function** extracts the faces in the pictures using a Single Shot MultiBox Detector (SSD) algorithm and uses only the frames that have faces in them for face recognition. It uses a pre-trained CNN model (ResNet-34) for face recognition and outputs the name of the extracted face. The final output is stored in the output bucket.
+ 
+The structure of the application is shown in the figure below. I used AWS Lambda for serverless computation and S3 for storing the data required for the functions.
+
+![Architecture Diagram](images/architecture-diagram.png)
+
+
