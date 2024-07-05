@@ -8,6 +8,10 @@ In this section, I'll describe the main components in this application.
 ### Frontend
 The frontend is built using **React.js** and styled with **TailwindCss**.  The application is secured with **Firebase Authentication**.
 
+<p align="center">
+  <img src="./public/images/Login.jpeg" alt="Login" width="45%" />
+  <img src="./public/images/Dashboard.jpeg" alt="Dashboard" width="45%" />
+</p>
 
 ### Backend
  Our app will be a video analysis application that uses four Lambda functions to implement a multi-stage pipeline to process videos sent by users.
