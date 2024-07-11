@@ -24,6 +24,9 @@ yarn-debug.log*
 yarn-error.log*
 
 #terraform
+/infrastructure/dev/lambda_files/getOutputData/*.zip
+/infrastructure/dev/lambda_files/deleteResultItems/*.zip
+/infrastructure/dev/lambda_files/getPresignedUrl/*.zip
 /infrastructure/dev/.terraform*
 /infrastructure/dev/.terraform.lock.hcl
 /infrastructure/dev/terraform.tfstate

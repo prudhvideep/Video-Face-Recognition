@@ -8,7 +8,6 @@ s3 = boto3.client('s3')
 def lambda_handler(event, context):
     try:
         body = event.get('body')
-        print("Body ---->",body)
         if body:
             body = json.loads(body)
             bucket_name = body.get('bucketName')

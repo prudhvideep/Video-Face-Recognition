@@ -1,3 +1,9 @@
+variable "account_id" {
+  description = "12 digit aws account id"
+  default = "471112564216"
+}
+
+
 variable "input_bucket" {
   description = "Name of the input S3 bucket"
   default     = "07052024-input"
@@ -18,7 +24,12 @@ variable "layer_bucket" {
   default = "07052024-layer-bucket"
 }
 
-variable "get_presigned_url" {
+variable "presigned_url_lambda_name" {
   description = "Name of the presigned url lambda function"
   default = "getPresignedUrl"
+}
+
+variable "frame_splitting_lambda_name" {
+  description = "Name of the video splitting function"
+  default = "video-splitting"
 }
