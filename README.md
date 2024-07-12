@@ -50,12 +50,19 @@ git clone git@github.com:prudhvideep/Video-Face-Recognition.git && cd Video-Face
 
 ### Infrastructure
 
-Execute the script **setup_infrastructure.sh** to install the prerequisites and initialize the infrastructure in aws
+Execute the script **setup_infrastructure.sh** to install the prerequisites and initialize the infrastructure in aws (***using terraform*** )
 
 ```
 chmod +X ./scripts/setup_infrastructure.sh && sh ./scripts/setup_infrastructure.sh
 ```
 This script intializes the infrastructure and ouputs the necessary lambda function urls.
+<br>
+<br>
+To teardown the infrastructure execute
+
+```
+chmod +X ./scripts/destroy_infrastructure.sh && sh ./scripts/destroy_infrastructure.sh
+```
 
 ### Firebase
 
