@@ -38,45 +38,75 @@ The structure of the application is shown in the figure below. I used AWS Lambda
 ### Clone the repository
 
 ```
-git clone git@github.com:prudhvideep/Video-Face-Recognition.git
+git clone git@github.com:prudhvideep/Video-Face-Recognition.git && cd Video-Face-Recognition/
 ```
 
-### First, navigate to the repository
-
-```
-cd Video-Face-Recognition/
-```
-
-### Initialize the backend cloud infrastructure using terraform
-
-**Prerequisites**
+### Prerequisites
 
 - Terraform CLI (1.2.0+)
 - Aws CLI installed.
+- npm
 - AWS account and associated credentials.
 
-Set the environment variables
+### Infrastructure
+
+Execute the script **setup_infrastructure.sh** to install the prerequisites and initialize the infrastructure in aws
 
 ```
-export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
+chmod +X ./scripts/setup_infrastructure.sh && sh ./scripts/setup_infrastructure.sh
 ```
+This script intializes the infrastructure and ouputs the necessary lambda function urls.
+
+### Firebase
+
+Create a firebase project and setup the authentication with email and add the gmail provider to implement sign in with gmail.
+
+- **References**: please refer this article [Firebase Authentication](https://medium.com/@Adekola_Olawale/firebase-authentication-413626c5234d).
+
+### Environment Variables
+
+setup a .env file
 ```
-export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_ACCESS_KEY"
+touch .env
+```
+update the following environment variables
+
+```
+#firebase keys
+REACT_APP_FIREBASE_API_KEY ="<<Your Key>>"
+REACT_APP_AUTH_DOMAIN = "<<Your Key>>"
+REACT_APP_PROJECT_ID = "<<Your Key>>"
+REACT_APP_STORAGE_BUCKET = "<<Your Key>>"
+REACT_APP_MESSAGING_SENDER_ID = "<<Your Key>>"
+
+#Aws keys
+REACT_APP_S3_BUCKET_INPUT = "<<Your Key>>"
+REACT_APP_S3_BUCKET_OUTPUT = "<<Your Key>>"
+REACT_APP_PRESIGNED_LAMBDA_URL = "<<Your Key>>"
+REACT_APP_OUTPUT_LAMBDA_URL = "<<Your Key>>"
+REACT_APP_DELETE_LAMBDA_URL = "<<Your Key>>"
 ```
 
-Change the working directory 
-```
-cd infrastrcture/dev/
-```
-
-Initialize Terraform to set up the backend and download necessary plugins
+### Start React Application
+Install the project dependencies by running:
 
 ```
-terraform init
+npm install
 ```
 
-Apply the Terraform plan to create the infrastructure
+Start the development server
 
 ```
-terraform apply
+npm start
 ```
+To build the application for production, run:
+
+```
+npm run build
+```
+
+### Upcoming Features
+
+- Standard Logging.
+- Support for multiple media types.
+- Detecting vidoes with multiple characters.

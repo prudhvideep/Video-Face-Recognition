@@ -1,6 +1,5 @@
 variable "account_id" {
   description = "12 digit aws account id"
-  default = "471112564216"
 }
 
 
