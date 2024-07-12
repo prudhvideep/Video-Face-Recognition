@@ -43,7 +43,7 @@ export default function UploadMedia({ user,setShowMessage,setNotificationMessage
         useremail: user.email,
       };
   
-      const response = await fetch(process.env.REACT_APP_LAMBDA_URL, {
+      const response = await fetch(process.env.REACT_APP_PRESIGNED_LAMBDA_URL, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
