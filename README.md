@@ -1,29 +1,31 @@
 # Video Face Recognition
 
-In this project, I built an elastic application that can scale out and on-demand to process and detect faces in a video. I achieved this using the PaaS offerings from AWS - specifically AWS Lambda and other supporting services from AWS.
+In this project, I built an elastic application that can scale out on-demand and detect faces present in a video. I built this using the PaaS offerings from AWS - specifically AWS Lambda and other supporting services from AWS.
 
-**Try the live Version ---->** https://main.d2g4ycz7ogc8gz.amplifyapp.com/
+![Demo](./public/images/demo.gif)
 
-## Description
+**Try it here :**  https://main.d2g4ycz7ogc8gz.amplifyapp.com/
+
+## Components
 
 In this section, I'll describe the main components of this application.
 
 ### Frontend
 
-The front end is built using **React.js** and styled with **TailwindCss**. The application is secured with **Firebase Authentication**.
+The front end is built using **React.js** and styled with **TailwindCss**, ensuring a responsive design. The application is secured with **Firebase Authentication**.
 <p align="center">
-  <img src="./public/images/Login.jpeg" alt="Dashboard" width="50%" height="auto" style="max-height: 300px; object-fit: contain;"/>
+  <img src="./public/images/Responsive Website.png" alt="Dashboard" width="100%" height="auto" style="max-height: 300px; object-fit: contain;"/>
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <img src="./public/images/Dashboard.jpeg" alt="Dashboard" width="50%" height="auto" style="max-height: 300px; object-fit: contain;"/>
-</p>
+</p> -->
 
 ### Backend
 
 Our video analysis application uses four Lambda functions to implement a multi-stage pipeline to process videos sent by users.
 
-- The pipeline starts with a user uploading a video to the input bucket.
+- The pipeline starts with a user uploading a video to the input bucket (through the web interface).
 - ***video-splitting function*** splits the video into frames and chunks them into the group-of-pictures (GoP) using FFmpeg. It stores this group of pictures in an intermediate stage-1 bucket.
 - ***face-recognition function*** extracts the faces in the pictures using a Single Shot MultiBox Detector (SSD) algorithm and uses only the frames with faces for face recognition. It uses a pre-trained CNN model (ResNet-34) for face recognition and outputs the name of the extracted face. The final output is stored in the output bucket.
 
@@ -48,13 +50,33 @@ git clone git@github.com:prudhvideep/Video-Face-Recognition.git && cd Video-Face
 - npm
 - AWS account and associated credentials.
 
-### Infrastructure
+### Initialize Infrastructure
 
-Execute the script **setup_infrastructure.sh** to install the prerequisites and initialize the infrastructure in AWS (***using terraform*** )
+Execute the script **setup_infrastructure.sh** to install all the prerequisites and initialize the infrastructure in AWS (***using terraform*** )
 
 ```
 chmod +X ./scripts/setup_infrastructure.sh && sh ./scripts/setup_infrastructure.sh
 ```
+
+Enter your *aws_access_key_id* and *aws_secret_access_key* when prompted
+
+```
+pmutyal@Prudhvi:~/video-face-recognition$ ./scripts/setup_infrastructure.sh 
+
+Checking and installing prerequisites...
+Terraform is already installed.
+AWS CLI is already installed.
+Docker is already installed.
+npm is already installed.
+All prerequisites are installed.
+
+Setting AWS credentials...
+Enter your AWS Access Key ID: <YOUR_ACCESS_KEY>
+Enter your AWS Secret Access Key: <YOUR_SECRET_KEY>
+```
+
+
+
 This script initializes the infrastructure and outputs the necessary lambda function urls.
 <br>
 <br>
