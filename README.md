@@ -2,7 +2,9 @@
 
 In this project, I built an elastic application that can scale out on-demand and detect faces present in a video. I built this using the PaaS offerings from AWS - specifically AWS Lambda and other supporting services from AWS.
 
-![Demo](./public/images/demo.gif)
+<div style="text-align: center;">
+    <img src="./public/images/demo.gif" alt="Demo">
+</div>
 
 **Try it here :**  https://main.d2g4ycz7ogc8gz.amplifyapp.com/
 
