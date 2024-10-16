@@ -15,9 +15,9 @@ In this section, I'll describe the main components of this application.
 ### Frontend
 
 The front end is built using **React.js** and styled with **TailwindCss**, ensuring a responsive design. The application is secured with **Firebase Authentication**.
-<p align="center">
+<!-- <p align="center">
   <img src="./public/images/Responsive Website.png" alt="Dashboard" width="100%" height="auto" style="max-height: 300px; object-fit: contain;"/>
-</p>
+</p> -->
 
 <!-- <p align="center">
   <img src="./public/images/Dashboard.jpeg" alt="Dashboard" width="50%" height="auto" style="max-height: 300px; object-fit: contain;"/>
