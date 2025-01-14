@@ -33,6 +33,10 @@ Our video analysis application uses four Lambda functions to implement a multi-s
 
 The structure of the application is shown in the figure below. I used AWS Lambda for serverless computation and S3 for storing the data required for the functions.
 
+> [!IMPORTANT]
+>
+> The demo only accepts video files and the file size is capped to 5mb to stay within the free tier limits.
+
 <p align="center">
   <img src="./public/images/architecture-diagram.png" alt="architecture-diagram" width="auto" height="auto" style="max-height: 300px; object-fit: contain;"/>
 </p>
