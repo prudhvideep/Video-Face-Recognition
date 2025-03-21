@@ -20,7 +20,6 @@ function SignIn() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log("User ---> ",user)
         navigate("/dashboard");
       }
     });
@@ -30,7 +29,6 @@ function SignIn() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Inside handle submit");
 
     if (!email || !password) return;
 
@@ -46,7 +44,6 @@ function SignIn() {
     } catch (error) {
       const errorCode = error.code;
       setError(true);
-      console.log("Error code ----> ", errorCode);
 
       switch (errorCode) {
         case "auth/invalid-email":
@@ -80,15 +77,11 @@ function SignIn() {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
 
-      console.log("Result ----> ", result);
-
       const userName = result.user.displayName;
-      console.log("User Name ----> ", userName);
       navigate("/dashboard");
     } catch (error) {
       const errorCode = error.code;
       setError(true);
-      console.log("Error code ----> ", errorCode);
 
       switch (errorCode) {
         case "auth/popup-closed-by-user":
@@ -119,11 +112,6 @@ function SignIn() {
     <>
       <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>

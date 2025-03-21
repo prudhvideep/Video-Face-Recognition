@@ -9,7 +9,6 @@ function Profile() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userInfo) => {
       if (userInfo) {
-        console.log("User Info ----> ", userInfo);
         setUser(userInfo);
       } else {
         navigate("/");
