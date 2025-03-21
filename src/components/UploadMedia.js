@@ -12,12 +12,22 @@ export default function UploadMedia({
   const [uploading, setUploading] = useState(false);
   const [isDragActive, setIsDragActive] = useState(false);
   const fileInputRef = useRef(null);
+  const MAX_FILE_SIZE_MB = 5;
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       processFile(selectedFile);
     }
+  };
+
+  const validateAndProcessFile = (selectedFile) => {
+    if (selectedFile.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+      setNotificationMessage(`File size exceeds ${MAX_FILE_SIZE_MB}MB limit.`);
+      setShowMessage(true);
+      return;
+    }
+    processFile(selectedFile);
   };
 
   const processFile = (selectedFile) => {
@@ -64,7 +74,7 @@ export default function UploadMedia({
     setIsDragActive(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      processFile(e.dataTransfer.files[0]);
+      validateAndProcessFile(e.dataTransfer.files[0]);
     }
   };
 
@@ -146,7 +156,7 @@ export default function UploadMedia({
             ref={fileInputRef}
             type="file"
             onChange={handleFileChange}
-            accept="image/*,video/*"
+            accept="video/*"
             className="hidden"
           />
           <FaCloudUploadAlt className="text-5xl text-gray-400 mb-4" />
